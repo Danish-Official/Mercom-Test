@@ -7,6 +7,7 @@ import Events from './pages/Events';
 import EventDetails from './pages/EventDetails';
 import AddEvent from './pages/AddEvent';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="/event/:id" element={<EventDetails />} />
               <Route path="/add-event" element={<AddEvent />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>
           <Footer />

@@ -8,15 +8,21 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (token) {
-      // Optionally verify token, but for now assume valid
-      setUser({}); // Could decode token for user info
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        setUser({ id: payload.id, role: payload.role });
+      } catch (err) {
+        setUser(null);
+      }
     }
   }, [token]);
 
   const login = (newToken) => {
     setToken(newToken);
     localStorage.setItem('token', newToken);
-    setUser({});
+    // Decode token to get user info
+    const payload = JSON.parse(atob(newToken.split('.')[1]));
+    setUser({ id: payload.id, role: payload.role });
   };
 
   const logout = () => {

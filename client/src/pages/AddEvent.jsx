@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function AddEvent() {
-  const { token } = useAuth();
+  const { token, user } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     title: '',
@@ -16,8 +16,8 @@ export default function AddEvent() {
   });
   const [loading, setLoading] = useState(false);
 
-  if (!token) {
-    navigate('/login');
+  if (!token || user?.role !== 'admin') {
+    navigate('/');
     return null;
   }
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Header() {
-  const { token, logout } = useAuth();
+  const { token, logout, user } = useAuth();
 
   return (
     <header style={{ background: '#007bff', color: 'white', padding: '10px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -13,7 +13,8 @@ export default function Header() {
         <Link to="/events" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>Events</Link>
         {token ? (
           <>
-            <Link to="/add-event" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>Add Event</Link>
+            {user?.role === 'admin' && <Link to="/add-event" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>Add Event</Link>}
+            {user?.role === 'admin' && <Link to="/admin" style={{ color: 'white', margin: '0 10px', textDecoration: 'none' }}>Admin</Link>}
             <button onClick={logout} style={{ background: 'transparent', border: 'none', color: 'white', cursor: 'pointer' }}>Logout</button>
           </>
         ) : (

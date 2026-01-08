@@ -12,10 +12,24 @@ export default function Home() {
       .then(events => setFeaturedEvents(events.slice(0, 3))); // Show first 3 as featured
   }, []);
 
-  const handleNewsletter = (e) => {
+  const handleNewsletter = async (e) => {
     e.preventDefault();
-    alert(`Subscribed with ${email}`);
-    setEmail('');
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/newsletter/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert('Subscribed successfully!');
+        setEmail('');
+      } else {
+        alert(data.message || 'Subscription failed');
+      }
+    } catch (err) {
+      alert('Error subscribing. Please try again.');
+    }
   };
 
   return (
