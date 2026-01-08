@@ -1,0 +1,55 @@
+Scope of Work (SOW)
+
+Phase 1: Planning & Design
+
+    Requirement analysis
+
+    Wireframes & UI design
+
+    Database design
+
+Phase 2: Backend Development
+
+    API development
+
+    Authentication & authorization
+
+    Database integration
+
+Phase 3: Frontend Development
+
+    Page implementation
+
+    API integration
+
+    Responsive design
+
+Phase 4: Testing & QA
+
+    Unit testing
+
+    API testing
+
+Phase 5: Deployment
+
+    Production build
+
+    Server deployment
+
+    Database setup
+
+8. Future Enhancements
+
+    Paid featured listings
+
+    Admin dashboard
+
+    Event ticketing
+
+    Analytics & reporting
+
+    Multi‑language support
+
+9. Deliverables
+
+    Full MERN source code
